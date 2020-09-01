@@ -222,6 +222,10 @@ ingress:
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ##
+persistentVolumes:
+  name: pv-wiki
+  size: 10Gi
+  reclaimPolicy: Retain
 persistence:
   enabled: true
   ## Mediawiki data Persistent Volume Storage Class
@@ -236,7 +240,7 @@ persistence:
   ## A manually managed Persistent Volume and Claim
   ## Requires persistence.enabled: true
   ## If defined, PVC must be created manually before volume will be bound
-  existingClaim: pvc-wiki
+  #existingClaim: pvc-wiki
   volumeMount: /bitnami/mediawiki
   accessMode: ReadWriteOnce
   size: 5Gi

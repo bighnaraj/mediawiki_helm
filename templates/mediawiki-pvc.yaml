@@ -1,8 +1,27 @@
 {{- if not .Values.persistence.existingClaim -}}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.persistentVolumes.name | quote }}
+  labels:
+    app: {{ template "mediawiki.name" . }}
+    chart: {{ template "mediawiki.chart" . }}
+    release: {{ .Release.Name | quote }}
+    heritage: {{ .Release.Service | quote }}
+spec:
+  capacity:
+    storage: {{ .Values.persistentVolumes.size }}
+  accessModes:
+  - {{ .Values.persistence.accessMode | quote }}
+  persistentVolumeReclaimPolicy: {{ .Values.persistentVolumes.reclaimPolicy }}
+  storageClassName: {{ .Values.localStorageClass.name | quote }}
+  hostPath:
+    path: "/mnt/wiki"
+---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ template "mediawiki.fullname" . }}-mediawiki
+  name: {{ template "mediawiki.fullname" . }}
   labels:
     app: {{ template "mediawiki.name" . }}
     chart: {{ template "mediawiki.chart" . }}
