@@ -20,7 +20,7 @@ deploy mediawiki on kubernetes cluster using helm chart
 - fixed values.yaml
 - fixed chart/mariadb/values.yaml
 
-# Workaround
+# Workaround (Automation in progress)
 - Because of file access restriction, the application pod may crash. Execute the following if application pod crashes
   1) sudo chown -R 1001:1001 /mnt/wiki
   2) systemctl restart docker
