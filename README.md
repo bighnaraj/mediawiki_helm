@@ -24,7 +24,8 @@ deploy mediawiki on kubernetes cluster using helm chart
 - Because of file access restriction, the application pod may crash. Execute the following if application pod crashes
   1) sudo chown -R 1001:1001 /mnt/wiki
   2) systemctl restart docker
-  3) delete the mariadb and application pod
-- Because of low memory the liveness and readiness may fail
+  3) delete the mariadb and application pod. They will be redeployed by deployment config
+- Because of low memory the liveness and readiness may fail. Execute the following.
   1) rm -rf /mnt/wiki/
   2) rm -rf /mnt/data/
+  3) delete the mariadb and application pod. They will be redeployed by deploymeny config
