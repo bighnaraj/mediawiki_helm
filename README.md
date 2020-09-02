@@ -4,13 +4,18 @@ deploy mediawiki on kubernetes cluster using helm chart
 # Prerequisite
 - Kubernetes Cluster (version - 1.14+)
 - Helm (version - 3)
+- python 2.7
 
 # Deployment Procedure
 - pull the repo (git clone)
-- create 2 directories (/mnt/data and /mnt/wiki)
+- Enter into the directory (cd mediawiki_helm)
+- create 2 directories (mkdir -p /mnt/data /mnt/wiki)
 - create pv and pvc for mariadb manually using deploypvc.yaml (automation in progress)
   -- kubectl apply -f deploypvc.yaml
-- execute helm (helm install my-release mediawiki_helm)
+- set the configuration parameters into the config file (vi mediawiki.conf)
+- execute the automate.py file (python automate.py)
+- fetch the absolute_path for the current directory (pwd)
+- execute helm (helm install my-release absolute_path)
 
 # Fixes
 - fixed the PersistentVolume Creation for application
