@@ -25,7 +25,6 @@ master_volume_name = config.get('master_volume', 'name')
 master_volume_reclaimPolicy = config.get('master_volume', 'reclaimPolicy')
 master_volume_size = config.get('master_volume', 'size')
 
-master_volume_claim_name = config.get('master_volume_claim', 'existingClaim')
 master_volume_claim_size = config.get('master_volume_claim', 'size')
 
 pod_security_enabled = config.get('podSecurityContext', 'enabled')
@@ -62,7 +61,6 @@ data['persistentVolumes']['name'] = master_volume_name
 data['persistentVolumes']['reclaimPolicy'] = master_volume_reclaimPolicy
 data['persistentVolumes']['size'] = master_volume_size
 
-data['persistence']['existingClaim'] = master_volume_claim_name
 data['persistence']['size'] = master_volume_claim_size
 
 data['podSecurityContext']['enabled'] = bool(pod_security_enabled)
